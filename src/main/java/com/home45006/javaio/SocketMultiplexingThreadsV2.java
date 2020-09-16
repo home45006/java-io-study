@@ -33,6 +33,7 @@ class ServerBootStrap {
     private EventLoopGroup group;
     private EventLoopGroup chiledGroup;
     ServerAcceptr sAcceptr;
+
     public ServerBootStrap group(EventLoopGroup boss, EventLoopGroup worker) {
         group = boss;
         chiledGroup = worker;
@@ -41,11 +42,11 @@ class ServerBootStrap {
 
     public void bind(int port) throws IOException {
         //bind 处理的是server的启动过程
-         ServerSocketChannel server = ServerSocketChannel.open();
+        ServerSocketChannel server = ServerSocketChannel.open();
         server.configureBlocking(false);
         server.bind(new InetSocketAddress(port));
         sAcceptr = new ServerAcceptr(chiledGroup, server);
-         EventLoop eventloop = group.chosser();
+        EventLoop eventloop = group.chosser();
         //把启动server，bind端口的操作变成task，推送到eventloop中执行。
         eventloop.execute(new Runnable() {
             @Override
@@ -90,6 +91,7 @@ interface Handler {
 class ClientReader implements Handler {
 
     SocketChannel key;
+
     ClientReader(SocketChannel server) {
         this.key = server;
     }
@@ -120,16 +122,18 @@ class ClientReader implements Handler {
 class ServerAcceptr implements Handler {
     ServerSocketChannel key;
     EventLoopGroup cGroup;
+
     ServerAcceptr(EventLoopGroup cGroup, ServerSocketChannel server) {
         this.key = server;
         this.cGroup = cGroup;
     }
+
     public void doRead() {
         try {
             final EventLoop eventLoop = cGroup.chosser();
             final SocketChannel client = key.accept();
             client.configureBlocking(false);
-            client.setOption(StandardSocketOptions.TCP_NODELAY,true);
+            client.setOption(StandardSocketOptions.TCP_NODELAY, true);
             final ClientReader cHandler = new ClientReader(client);
             eventLoop.execute(new Runnable() {
                 @Override
@@ -230,6 +234,7 @@ class EventLoop implements Executor {
             }
         }
     }
+
     private boolean inEventLoop() {
         return thread == Thread.currentThread();
     }
