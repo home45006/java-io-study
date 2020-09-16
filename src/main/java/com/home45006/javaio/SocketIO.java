@@ -12,9 +12,8 @@ import java.net.Socket;
  */
 public class SocketIO {
 
-
     public static void main(String[] args) throws Exception {
-        ServerSocket server = new ServerSocket(9090,20);
+        ServerSocket server = new ServerSocket(9090, 20);
 
         System.out.println("step1: new ServerSocket(9090) ");
 
@@ -27,12 +26,12 @@ public class SocketIO {
                 try {
                     in = client.getInputStream();
                     BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-                    while(true){
+                    while (true) {
                         String dataline = reader.readLine(); //阻塞2
 
-                        if(null != dataline){
-                        System.out.println(dataline);
-                        }else{
+                        if (null != dataline) {
+                            System.out.println(dataline);
+                        } else {
                             client.close();
                             break;
                         }
@@ -42,12 +41,7 @@ public class SocketIO {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
-
             }).start();
-
         }
     }
-
-
 }

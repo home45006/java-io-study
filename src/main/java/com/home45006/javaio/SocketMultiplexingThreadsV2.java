@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * 模拟Netty线程模型
+ * 模拟实现Netty线程模型
  */
 public class SocketMultiplexingThreadsV2 {
     public static void main(String[] args) throws IOException {

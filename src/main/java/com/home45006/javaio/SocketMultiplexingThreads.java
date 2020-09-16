@@ -14,6 +14,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
+ * 多线程java NIO
  * 1 BOSS
  * 2 WORKER
  */

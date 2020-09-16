@@ -9,6 +9,7 @@ import java.util.LinkedList;
 
 /**
  * None Blocking IO
+ * java NIO
  */
 public class SocketNIO {
 
@@ -19,17 +20,6 @@ public class SocketNIO {
         ServerSocketChannel ss = ServerSocketChannel.open();
         ss.bind(new InetSocketAddress(9090));
         ss.configureBlocking(false); //重点  OS  NONBLOCKING!!!
-
-//        ss.setOption(StandardSocketOptions.TCP_NODELAY, true);
-//        StandardSocketOptions.TCP_NODELAY
-//        StandardSocketOptions.SO_KEEPALIVE
-//        StandardSocketOptions.SO_LINGER
-//        StandardSocketOptions.SO_RCVBUF
-//        StandardSocketOptions.SO_SNDBUF
-//        StandardSocketOptions.SO_REUSEADDR
-
-
-
 
         while (true) {
             Thread.sleep(1000);
@@ -58,10 +48,7 @@ public class SocketNIO {
                     System.out.println(c.socket().getPort() + " : " + b);
                     buffer.clear();
                 }
-
-
             }
         }
     }
-
 }

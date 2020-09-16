@@ -11,7 +11,8 @@ import java.util.Iterator;
 import java.util.Set;
 
 /**
- * Select
+ * 单线程 java NIO
+ * selector bytebuffer channel
  */
 public class SocketMultiplexingSingleThreadv1 {
 
