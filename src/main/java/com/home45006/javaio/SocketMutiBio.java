@@ -9,8 +9,9 @@ import java.net.Socket;
 
 /**
  * BIO
+ * 多线程处理多连接
  */
-public class SocketIO {
+public class SocketMutiBio {
 
     public static void main(String[] args) throws Exception {
         ServerSocket server = new ServerSocket(9090, 20);

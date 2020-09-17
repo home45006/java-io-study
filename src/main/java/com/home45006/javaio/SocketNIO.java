@@ -9,7 +9,8 @@ import java.util.LinkedList;
 
 /**
  * None Blocking IO
- * java NIO
+ * java NIO (selector/bytebuffer/channel)
+ * 单线程处理多连接
  */
 public class SocketNIO {
 
